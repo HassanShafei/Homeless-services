@@ -127,8 +127,14 @@ submit_button = st.button("Submit")
 
 # Initialize global variables
 conversation_history = []
-api_key = os.getenv("OPENAI_API_KEY")  # Make sure you set this environment variable in GitHub Secrets
 
+# Fetch the API key from the environment variable
+api_key = os.getenv("OPENAI_API_KEY")
+
+if api_key is None:
+    raise ValueError("No OpenAI API key found in environment. Please set the OPENAI_API_KEY environment variable.")
+else:
+    print("OpenAI API key loaded successfully.")
 
 def parse_extracted_info(extracted_info):
     # Using regular expressions to find service type and zipcode robustly
