@@ -162,9 +162,9 @@ if submit_button:
             
                 if classified_service_type != "Other":
                     service_files = {
-                        "Shelter": "/UpToDate_Versions/Final_Temporary_Shelter_20240109.csv",
-                        "Mental Health": "/UpToDate_Versions/Final_Mental_Health_20240109.csv",
-                        "Food": "/UpToDate_Versions/Final_Emergency_Food_20240109.csv"
+                        "Shelter": "UpToDate_Versions/Final_Temporary_Shelter_20240109.csv",
+                        "Mental Health": "UpToDate_Versions/Final_Mental_Health_20240109.csv",
+                        "Food": "UpToDate_Versions/Final_Emergency_Food_20240109.csv"
                     }
                     datafile = service_files[classified_service_type]
                     df = pd.read_csv(datafile)
