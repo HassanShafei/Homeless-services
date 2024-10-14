@@ -93,11 +93,19 @@ def read_data(df):
         st.write("Main Services:", main_services)
         st.write("Other Services:", other_services)
 
+        # Safely concatenate the lists
+        if main_services is None:
+            main_services = []
+        if other_services is None:
+            other_services = []
+
         # Concatenate both lists, ensuring we don't concatenate NoneType
         services = main_services + other_services
 
         # Remove invalid or 'None' values
         services = [service for service in services if service and service != 'None']
+
+        st.write("Concatenated services:", services)
 
         # Get the opening hours for the current day
         opening_hours_today = row[current_day] if pd.notna(row[current_day]) else 'Unavailable'
