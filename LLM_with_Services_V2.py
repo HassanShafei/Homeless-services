@@ -90,8 +90,8 @@ def read_data(df):
         main_services = eval(row['Main_Services']) if pd.notna(row['Main_Services']) and isinstance(row['Main_Services'], str) else []
         other_services = eval(row['Other_Services']) if pd.notna(row['Other_Services']) and isinstance(row['Other_Services'], str) else []
         
-        st.write("Main Services:", main_services)
-        st.write("Other Services:", other_services)
+        #st.write("Main Services:", main_services)
+        #st.write("Other Services:", other_services)
 
         # Safely concatenate the lists
         if main_services is None:
@@ -105,7 +105,7 @@ def read_data(df):
         # Remove invalid or 'None' values
         services = [service for service in services if service and service != 'None']
 
-        st.write("Concatenated services:", services)
+        #st.write("Concatenated services:", services)
 
         # Get the opening hours for the current day
         opening_hours_today = row[current_day] if pd.notna(row[current_day]) else 'Unavailable'
