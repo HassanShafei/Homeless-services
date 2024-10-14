@@ -6,6 +6,7 @@ from datetime import datetime
 import pgeocode
 import pandas as pd
 import openai
+import os
 import re
 
 from branca.element import IFrame
