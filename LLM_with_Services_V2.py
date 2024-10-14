@@ -126,7 +126,7 @@ submit_button = st.button("Submit")
 
 # Initialize global variables
 conversation_history = []
-api_key = 'sk-dObSkkSDci13B8qESmu517qqNBMYbbUyAYuH2KTuV6T3BlbkFJdI0jIdUZUOC8cESTlvnqAAslpVDARiqK9ElSie9awA'  # Replace this with your actual OpenAI API key
+api_key = os.getenv("OPENAI_API_KEY")  # Make sure you set this environment variable in GitHub Secrets
 
 
 def parse_extracted_info(extracted_info):
