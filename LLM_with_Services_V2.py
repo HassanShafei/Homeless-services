@@ -129,7 +129,7 @@ submit_button = st.button("Submit")
 conversation_history = []
 
 # Fetch the API key from the environment variable
-api_key = os.getenv("OPENAI_API_KEY")
+api_key = os.getenv("API_KEY")
 
 if api_key is None:
     raise ValueError("No OpenAI API key found in environment. Please set the OPENAI_API_KEY environment variable.")
