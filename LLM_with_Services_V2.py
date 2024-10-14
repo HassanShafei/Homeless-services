@@ -126,7 +126,7 @@ submit_button = st.button("Submit")
 
 # Initialize global variables
 conversation_history = []
-api_key = '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'  # Replace this with your actual OpenAI API key
+api_key = 'sk-9EeZvRWZu9QUxMCR3z0gBcFjRdTzLcBmOiwL95J4lGT3BlbkFJdfgDM1zS_HwAQW23RKSKfDupfBdbhNG0uaYeI9RLsA'  # Replace this with your actual OpenAI API key
 
 
 def parse_extracted_info(extracted_info):
