@@ -89,6 +89,9 @@ def read_data(df):
         # Safely handle 'Main_Services' and 'Other_Services' to avoid NoneType issues
         main_services = eval(row['Main_Services']) if pd.notna(row['Main_Services']) and isinstance(row['Main_Services'], str) else []
         other_services = eval(row['Other_Services']) if pd.notna(row['Other_Services']) and isinstance(row['Other_Services'], str) else []
+        
+        st.write("Main Services:", main_services)
+        st.write("Other Services:", other_services)
 
         # Concatenate both lists, ensuring we don't concatenate NoneType
         services = main_services + other_services
