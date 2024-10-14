@@ -81,18 +81,21 @@ def safe_convert_time(time_str):
 @st.cache_data
 def read_data(df):
     df = df.dropna(subset=['Latitude', 'Longitude'])  # Ensure we have the necessary location data
-    # Get the current day and time
     now = datetime.now()
     current_day = now.strftime('%A')  # e.g., 'Monday'
     
     data = []
     for index, row in df.iterrows():
-        # Merge and clean services information
-        main_services = eval(row['Main_Services']) if pd.notna(row['Main_Services']) else []
-        other_services = eval(row['Other_Services']) if pd.notna(row['Other_Services']) else []
+        # Safely handle 'Main_Services' and 'Other_Services' to avoid NoneType issues
+        main_services = eval(row['Main_Services']) if pd.notna(row['Main_Services']) and isinstance(row['Main_Services'], str) else []
+        other_services = eval(row['Other_Services']) if pd.notna(row['Other_Services']) and isinstance(row['Other_Services'], str) else []
+
+        # Concatenate both lists, ensuring we don't concatenate NoneType
         services = main_services + other_services
-        services = [service for service in services if service != 'None']
-        
+
+        # Remove invalid or 'None' values
+        services = [service for service in services if service and service != 'None']
+
         # Get the opening hours for the current day
         opening_hours_today = row[current_day] if pd.notna(row[current_day]) else 'Unavailable'
 
@@ -108,7 +111,6 @@ def read_data(df):
             <strong>Cost:</strong> {row['Cost']}
         """
 
-        # Append this information along with latitude and longitude
         data.append({
             'latitude': row['Latitude'],
             'longitude': row['Longitude'],
