@@ -128,14 +128,14 @@ submit_button = st.button("Submit")
 # Initialize global variables
 conversation_history = []
 
-# Fetch the API key from the environment variable
-api_key = os.getenv("API_KEY")
+# Fetch the API key from Streamlit secrets
+api_key = st.secrets["OPENAI_API_KEY"]
 
 if api_key is None:
-    raise ValueError("No OpenAI API key found in environment. Please set the OPENAI_API_KEY environment variable.")
+    raise ValueError("No OpenAI API key found in Streamlit secrets. Please set the OPENAI_API_KEY secret.")
 else:
-    print("OpenAI API key loaded successfully.")
-
+    st.write("OpenAI API key loaded successfully.")
+    
 def parse_extracted_info(extracted_info):
     # Using regular expressions to find service type and zipcode robustly
     service_match = re.search(r"service(?: type)?:\s*(.+)", extracted_info, re.I)
